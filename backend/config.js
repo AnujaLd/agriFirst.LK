@@ -1,10 +1,10 @@
 // config.js
 module.exports = {
   mysql: {
-    host: 'sqlffreedb.tech',
-    user: 'freedb_rootuserfyp',
-    password: '69SGhxd#T*qHSrE',
-    database: 'freedb_plantDBFYP',
+    host: 'localhost',
+    user: 'root',
+    password: '1234',
+    database: 'plant_disease_db',
   },
   server: {
     port: 5001,

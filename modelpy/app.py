@@ -13,10 +13,10 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # MySQL configurations
-app.config['MYSQL_HOST'] = 'sqlffreedb.tech'
-app.config['MYSQL_USER'] = 'freedb_rootuserfyp'
-app.config['MYSQL_PASSWORD'] = '69SGhxd#T*qHSrE'
-app.config['MYSQL_DB'] = 'freedb_plantDBFYP'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_DB'] = 'plant_disease_db'
 
 mysql = MySQL(app)
 
@@ -84,6 +84,15 @@ def predict_and_generate_pdf():
 
     # Generate the PDF report
     pdf_path = generate_pdf(report_headline, prediction, treatment)
+
+
+    # Please Access the user data on the json and user_id pass to the cur.execute
+
+    # Save prediction to the database
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO user_predictions (prediction, treatment) VALUES (%s, %s)", (prediction, treatment))
+    mysql.connection.commit()
+    cur.close()
 
     return jsonify({'prediction': prediction, 'treatment': treatment, 'pdf_path': pdf_path})
 

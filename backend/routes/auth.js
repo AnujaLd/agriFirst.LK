@@ -93,7 +93,6 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
-    // If username and password are valid, create a token or session (not shown here)
 
     // Respond with user data or token
     res.json({ user: { id: user.id, username: user.username }, message: "Login successful" });
