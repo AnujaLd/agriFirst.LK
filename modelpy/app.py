@@ -85,9 +85,6 @@ def predict_and_generate_pdf():
     # Generate the PDF report
     pdf_path = generate_pdf(report_headline, prediction, treatment)
 
-
-    # Please Access the user data on the json and user_id pass to the cur.execute
-
     # Save prediction to the database
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO user_predictions (prediction, treatment) VALUES (%s, %s)", (prediction, treatment))
